@@ -1,0 +1,36 @@
+/**/
+
+body{
+  background-color: dimgray;
+}
+
+.container{
+  width: 95%;
+  background-color: whitesmoke;
+  border-radius: 5px 5px 5px 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 5px;
+  padding-bottom: 20px;
+}
+
+@font-face{
+  font-family: "zebrra";
+  src: url("../fonts/ZEBRRA__.ttf") format("truetype");
+}
+
+h1{
+  font-family: zebrra;
+}
+
+.rind{
+  margin-top: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#imgIndex{
+  width: 95%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
