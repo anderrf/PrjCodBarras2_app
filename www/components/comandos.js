@@ -7,3 +7,7 @@ $(document).on("click", "#btnCadastro", function(){
 $(document).on("click", "#btnVoltar", function(){
   $(location).attr("href", "index.html");
 });
+
+$(document).on("click", "#btnPesquisa", function(){
+  $(location).attr("href", "pesquisar.html");
+});
