@@ -1,13 +1,9 @@
 // This is a JavaScript file
 
 $(document).on("click", "#btnCadastro", function(){
-  $(location).attr("href", "cadastro.html");
-});
-
-function mudarParaCadastro(){
   document.getElementById("imgIndex").src = "img/cdbarras.gif";
-  window.setTimeout('location.href = "cadastro.html"', 2000);
-}
+  window.setTimeout('$(location).attr("href", "cadastro.html");"', 2000);
+});
 
 $(document).on("click", "#btnPesquisa", function(){
   $(location).attr("href", "pesquisar.html");
@@ -59,6 +55,8 @@ $(document).on("click","#btnSalvar", function(){
     }
   });
 
+});
+
 $(document).on("click","btnPesquisar", function(){
    $.ajax({
         type:"post", //como enviar
@@ -77,7 +75,4 @@ $(document).on("click","btnPesquisar", function(){
              navigator.notification.alert(data);
         }
     });    
-}
-});
-
 });
