@@ -12,9 +12,17 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
 
+  <script>
+      $(document).ready(function(){
+          desabilita();
+          pesquisa();
+      });
+  </script>
+
+
 </head>
 <body>
-   <div class="container cindex">
+   <div class="container cintex">
      <div class="row rind">
        <div class="col-xs-12">
          <h2>Pesquisa</h2>
@@ -23,20 +31,15 @@
 
      <div class="row rind">
        <div class="col-xs-12">
-       <label for="">Pesquisa do Produto</label>
-       <select class="form-control" type="text" id="pesquisa" name="pesquisa">
+         <label for=""> Pesquisa de produto</label>
+          <select name="" class="form-control" id="pesquisa"></select>
       </div>
      </div>
 
      <div class="row rind">
        <div class="col-xs-6">
-       <button class="btn btn-block btn btn-success" id="btnPesquisar">
-       <span class="glyphicon glyphicon-ok">  Pesquisar</span>
-       </button>
-       </div>
-       <div class="col-xs-6">
-       <button class="btn btn-block btn btn-danger" id="btnVoltar">
-       <span class="glyphicon glyphicon-arrow-left">  Voltar<span>
+         <button class="btn btn-block btn btn-danger" id="btnVoltar">
+        <span class="glyphicon glyphicon-arrow-left">  Voltar<span>
        </button>
      </div>
     </div>
