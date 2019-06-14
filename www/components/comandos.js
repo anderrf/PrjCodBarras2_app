@@ -1,12 +1,28 @@
 // This is a JavaScript file
 
 $(document).on("click", "#btnCadastro", function(){
-  $(location).attr("href", "cadastro.html");
+  document.getElementById("imgIndex").src = "img/cdbarras.gif";
+  window.setTimeout('$(location).attr("href", "cadastro.html")', 2500);
 });
 
-function mudarParaCadastro(){
+$(document).on("click", "#btnScan", function(){
   document.getElementById("imgIndex").src = "img/cdbarras.gif";
-  window.setTimeout('location.href = "cadastro.html"', 2000);
+  window.setTimeout('scanBarcode()', 2500);
+});
+
+function scanBarcode() {
+    window.plugins.barcodeScanner.scan( function(result) {
+      encaminhar(result.text);
+    }, 
+    function(error) {
+       alert("Falha de escaneamento: " + error);
+    }
+    );
+}
+
+function encaminhar(resultado){
+  $(location).attr("href", "pesquisar.html");
+  navigator.vibrate(500);
 }
 
 $(document).on("click", "#btnPesquisa", function(){
@@ -40,6 +56,7 @@ $(document).on("click","#btnSalvar", function(){
     //Se der certo
     success: function (data){
       navigator.notification.alert("Certo:"+data);
+      navigator.notification.beep(1);
       $("#nome").val("");
       $("#cod").val("");
       $("#valor").val("");
@@ -59,6 +76,8 @@ $(document).on("click","#btnSalvar", function(){
     }
   });
 
+});
+
 $(document).on("click","btnPesquisar", function(){
    $.ajax({
         type:"post", //como enviar
@@ -77,7 +96,4 @@ $(document).on("click","btnPesquisar", function(){
              navigator.notification.alert(data);
         }
     });    
-}
-});
-
 });
