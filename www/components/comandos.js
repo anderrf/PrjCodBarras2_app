@@ -78,18 +78,45 @@ $(document).on("click","#btnSalvar", function(){
 
 });
 
-$(document).on("click","btnPesquisar", function(){
+function pesquisa(){
    $.ajax({
         type:"post", //como enviar
-        url:"https://crur3i2-jussimar.c9users.io/listar.php",//para onde enviar
+        url:"https://bdscanweb-luizgustavo417.c9users.io/webservice/lista.php",//para onde enviar
         dataType:"json",
         //se der certo
         success: function(data){
             var itemlista = "";
-            $.each(data.pessoas,function(i,dados){
-              itemlista += "<option value='"+dados.codigo+"'>"+dados.nome+"</option>"; 
+            $.each(data.celular,function(i,dados){
+              itemlista += "<option value='"+dados.id+"'>"+dados.nome+"</option>"; 
             });
-        $("#lista").html(itemlista);
+        $("#pesquisa").html(itemlista);
+        },
+        //se der errado
+        error: function(data){
+             navigator.notification.alert(data);
+        }
+    });        
+};
+
+$(document).on("change","#pesquisa", function(){
+   var codigoescolhido = $("option:selected", ("#pesquisa")).val();
+    $.ajax({
+        type:"get", //como enviar
+         url:"https://bdscanweb-luizgustavo417.c9users.io/webservice/lista-um.php",//para onde enviar
+        dataType:"json",
+          //se der certo
+        success: function(data){
+          $("#id").val(data.celular.id);
+          $("#nome").val(data.celular.nome);
+          $("#valor").val(data.celular.valor);
+          $("#descricao").val(data.celular.descricao);
+          $("#processador").val(data.celular.processador);
+          $("#sistemaop").val(data.celular.sistemaop);
+          $("#tamtela").val(data.celular.tamtela);
+          $("#tecwifi").val(data.celular.tecwifi);
+          $("#qtcam").val(data.celular.qtcam);
+          $("#rescam").val(data.celular.rescam);
+          $("#memflash").val(data.celular.memflash);        
         },
         //se der errado
         error: function(data){
@@ -97,3 +124,30 @@ $(document).on("click","btnPesquisar", function(){
         }
     });    
 });
+
+function habilita(){
+  $("#id").prop("readonly",false);
+  $("#nome").prop("readonly",false); 
+  $("#valor").prop("readonly",false);
+  $("#descricao").prop("readonly",false);
+  $("#processador").prop("readonly",false);
+  $("#sistemaop").prop("readonly",false);
+  $("#tamtela").prop("readonly",false);
+  $("#tecwifi").prop("readonly",false);
+  $("#qtcam").prop("readonly",false);
+  $("#rescam").prop("readonly",false);
+  $("#memflash").prop("readonly",false);
+}
+function desabilita(){
+  $("#id").prop("readonly",true);
+  $("#nome").prop("readonly",true); 
+  $("#valor").prop("readonly",true);
+  $("#descricao").prop("readonly",true);
+  $("#processador").prop("readonly",true);
+  $("#sistemaop").prop("readonly",true);
+  $("#tamtela").prop("readonly",true);
+  $("#tecwifi").prop("readonly",true);
+  $("#qtcam").prop("readonly",true);
+  $("#rescam").prop("readonly",true);
+  $("#memflash").prop("readonly",true);
+}
