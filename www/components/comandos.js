@@ -102,12 +102,14 @@ $(document).on("change","#pesquisa", function(){
    var codigoescolhido = $("option:selected", ("#pesquisa")).val();
     $.ajax({
         type:"get", //como enviar
-         url:"https://bdscanweb-luizgustavo417.c9users.io/webservice/lista-um.php",//para onde enviar
+        url:"https://bdscanweb-luizgustavo417.c9users.io/webservice/lista-um.php",//para onde enviar
+        data: "id="+codigoescolhido,
         dataType:"json",
           //se der certo
         success: function(data){
           $("#id").val(data.celular.id);
           $("#nome").val(data.celular.nome);
+          $("#cod").val(data.celular.codigo)
           $("#valor").val(data.celular.valor);
           $("#descricao").val(data.celular.descricao);
           $("#processador").val(data.celular.processador);
@@ -127,7 +129,8 @@ $(document).on("change","#pesquisa", function(){
 
 function habilita(){
   $("#id").prop("readonly",false);
-  $("#nome").prop("readonly",false); 
+  $("#nome").prop("readonly",false);
+  $("#cod").prop("readonly",false);
   $("#valor").prop("readonly",false);
   $("#descricao").prop("readonly",false);
   $("#processador").prop("readonly",false);
@@ -140,7 +143,8 @@ function habilita(){
 }
 function desabilita(){
   $("#id").prop("readonly",true);
-  $("#nome").prop("readonly",true); 
+  $("#nome").prop("readonly",true);
+  $("#cod").prop("readonly",true); 
   $("#valor").prop("readonly",true);
   $("#descricao").prop("readonly",true);
   $("#processador").prop("readonly",true);
