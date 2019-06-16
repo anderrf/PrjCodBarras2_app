@@ -5,26 +5,6 @@ $(document).on("click", "#btnCadastro", function(){
   window.setTimeout('$(location).attr("href", "cadastro.html")', 2500);
 });
 
-$(document).on("click", "#btnScan", function(){
-  document.getElementById("imgIndex").src = "img/cdbarras.gif";
-  window.setTimeout('scanBarcode()', 2500);
-});
-
-function scanBarcode() {
-    window.plugins.barcodeScanner.scan( function(result) {
-      encaminhar(result.text);
-    }, 
-    function(error) {
-       alert("Falha de escaneamento: " + error);
-    }
-    );
-}
-
-function encaminhar(resultado){
-  $(location).attr("href", "pesquisar.html");
-  navigator.vibrate(500);
-}
-
 $(document).on("click", "#btnPesquisa", function(){
   $(location).attr("href", "pesquisar.html");
 });
@@ -155,3 +135,54 @@ function desabilita(){
   $("#rescam").prop("readonly",true);
   $("#memflash").prop("readonly",true);
 }
+
+$(document).on("click", "#btnScan", function(){
+  scanBarcode();
+});
+
+function scanBarcode() {
+    window.plugins.barcodeScanner.scan( function(result) {
+      listascan(result.text);
+    }, 
+    function(error) {
+       alert("Falha de escaneamento: " + error);
+    }
+    );
+}
+
+function listascan(resultado){
+  var codigoescolhido = resultado;
+    $.ajax({
+        type:"get", //como enviar
+        url:"https://bdscanweb-luizgustavo417.c9users.io/webservice/lista-um.php",//para onde enviar
+        data: "id="+codigoescolhido,
+        dataType:"json",
+          //se der certo
+        success: function(data){
+          $("#id").val(data.celular.id);
+          $("#nome").val(data.celular.nome);
+          $("#cod").val(data.celular.codigo)
+          $("#valor").val(data.celular.valor);
+          $("#descricao").val(data.celular.descricao);
+          $("#processador").val(data.celular.processador);
+          $("#sistemaop").val(data.celular.sistemaop);
+          $("#tamtela").val(data.celular.tamtela);
+          $("#tecwifi").val(data.celular.tecwifi);
+          $("#qtcam").val(data.celular.qtcam);
+          $("#rescam").val(data.celular.rescam);
+          $("#memflash").val(data.celular.memflash);        
+        },
+        //se der errado
+        error: function(data){
+             navigator.notification.alert(data);
+        }
+    });
+}
+
+$(document).on("click", "#btnEditar", function(){
+  habilita();
+});
+
+$(document).on("click", "#btnCancelar", function(){
+  desabilita();
+});
