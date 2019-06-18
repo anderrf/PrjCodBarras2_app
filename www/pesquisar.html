@@ -39,10 +39,130 @@
      <div class="row rind">
        <div class="col-xs-6">
          <button class="btn btn-block btn btn-danger" id="btnVoltar">
-        <span class="glyphicon glyphicon-arrow-left">  Voltar<span>
-       </button>
+          <span class="glyphicon glyphicon-arrow-left">  Voltar<span>
+         </button>
+     </div>
+      <div class="col-xs-6">
+        <button class="btn btn-block btn-warning" id="btnScan">
+            <span class="glyphicon glyphicon-barcode">  Escanear</span>
+        </button>
      </div>
     </div>
+
+    <hr color="black"/>
+
+    <div class="row rind">
+      <div class="col-xs-12">
+        <label for="">Id:</label>
+        <input class="form-control" type="text" id="id">
+      </div>
+    </div>
+
+    <div class="row rind">
+        <div class="col-xs-12">
+          <label for="">Nome do produto:</label>
+          <input class="form-control" type="text" id="nome" name="nome">
+        </div>
+      </div>
+
+      <div class="row rind">
+        <div class="col-xs-12">
+          <label for="">Código de barra:</label>
+          <input class="form-control" type="text" id="cod" name="cod">
+        </div>
+      </div>
+
+      <div class="row rind">
+        <div class="col-xs-12">
+          <label for="">Valor:</label>
+          <input class="form-control" type="number" step="any" id="valor" name="valor">
+        </div>
+      </div>
+
+      <div class="row rind">
+        <div class="col-xs-12">
+          <label for="">Descrição geral:</label>
+          <textarea class="form-control" name="descricao" id="descricao" cols="" rows="3"></textarea>
+        </div>
+      </div>
+
+      <div class="row rind">
+        <div class="col-xs-12">
+          <label for="">Processador:</label>
+          <input class="form-control" type="text" id="processador" name="processador">
+        </div>
+      </div>
+
+      <div class="row rind">
+        <div class="col-xs-12">
+          <label for="">Sistema operacional:</label>
+          <input class="form-control" type="text" id="sistemaop" name="sistemaop">
+        </div>
+      </div>
+
+      <div class="row rind">
+        <div class="col-xs-12">
+          <label for="">Tamanho da tela:</label>
+          <input class="form-control" type="text" id="tamtela" name="tamtela">
+        </div>
+      </div>
+
+      <div class="row rind">
+        <div class="col-xs-12">
+          <label for="">Tecnologia Wi-Fi:</label>
+          <select class="form-control" name="tecwifi" id="tecwifi">
+            <option value="sim">Sim</option>
+            <option value="não">Não</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row rind">
+        <div class="col-xs-12">
+          <label for="">Quantidade de câmeras:</label>
+          <input class="form-control" type="number" id="qtcam" name="qtcam">
+        </div>
+      </div>
+
+      <div class="row rind">
+        <div class="col-xs-12">
+          <label for="">Respectivas resoluções das câmeras:</label>
+          <input class="form-control" type="text" id="rescam" name="rescam">
+        </div>
+      </div>
+
+      <div class="row rind">
+        <div class="col-xs-12">
+          <label for="">Memória Flash:</label>
+          <input class="form-control" type="text" id="memflash" name="memflash">
+        </div>
+      </div>
+
+      <hr color="black"/>
+
+      <div class="row rind">
+      <div class="col-xs-3">
+        <button class="btn btn-block btn-success" id="btnSalvaAlt">
+          <span class="glyphicon glyphicon-floppy-disk"></span>
+        </button>
+      </div>
+      <div class="col-xs-3">
+        <button class="btn btn-block btn-primary" id="btnEditar">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+      </div>
+      <div class="col-xs-3">
+        <button class="btn btn-block btn-danger" id="btnDeletar">
+          <span class="glyphicon glyphicon-trash"></span>
+        </button>
+      </div>
+      <div class="col-xs-3">
+        <button class="btn btn-block btn-warning" id="btnCancelar">
+          <span class="glyphicon glyphicon-remove-circle"></span>
+        </button>
+      </div>
+    </div>
+
    </div>
 </body>
 </html>
