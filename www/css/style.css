@@ -41,7 +41,11 @@ h2{
 }
 
 #imgCad{
-  border-width: 3px;
+  border-width: 2px;
   border-style: solid;
   border-color: black; 
+}
+
+#imgShow{
+  max-width: 100%;
 }

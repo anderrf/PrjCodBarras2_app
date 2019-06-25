@@ -1,5 +1,7 @@
 // This is a JavaScript file
 
+var formData = new FormData();
+
 $(document).on("click", "#btnCadastro", function(){
   document.getElementById("imgIndex").src = "img/cdbarras.gif";
   window.setTimeout('$(location).attr("href", "cadastro.html")', 2500);
@@ -13,10 +15,16 @@ $(document).on("click", "#btnVoltar", function(){
   $(location).attr("href", "index.html");
 });
 
-$(document).on("click", "#img", function(){
-  var img = $("#img").val();
-  $("#imgShow").val(img);
-});
+function mostraImg(input){
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      $('#imgShow')
+        .attr('src', e.target.result);
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
 
 $(document).on("click","#btnSalvar", function(){
 
@@ -33,11 +41,12 @@ $(document).on("click","#btnSalvar", function(){
     "rescam": $("#rescam").val(),
     "memflash": $("#memflash").val()
   }
+  formData.append(document.getElementById('img').this, 'img');
 
   $.ajax({
     type: "post", //Como enviar
     url: "https://prjcodbarras-andersonrf.c9users.io/webservice/cadastrar.php", //Para onde enviar
-    data: parametros, //O que enviar
+    data: parametros, formData, //O que enviar
     //Se der certo
     success: function (data){
       navigator.notification.alert(data);
@@ -53,7 +62,7 @@ $(document).on("click","#btnSalvar", function(){
       $("#qtcam").val("");
       $("#rescam").val("");
       $("#memflash").val("");
-
+      $("#img").val("");
     },
     //Se der errado
     error: function(data){
